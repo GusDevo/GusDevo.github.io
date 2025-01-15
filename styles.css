@@ -1,0 +1,947 @@
+/* Animaciones de entrada */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 1s ease-out forwards; /* Duración de 1s */
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+/* Animaciones de scroll */
+.scroll-fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.scroll-fade-in.visible {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+
+/*General*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins";
+  background-color: rgba(217, 217, 217, 100%);
+}
+
+/*Navbar*/
+
+.navbar{
+  position: fixed;
+  padding: 0px 0;
+  margin-top: 0;
+  left: 0;
+  width: 100%;
+  transition: background-color 0.3s ease;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar img{
+  position: absolute;
+  top: 5px;
+  left: 10px;
+}
+
+.menu{
+  display: flex;
+  justify-content: right;
+  list-style-type: none;
+  padding: 0;
+  margin-top: 20px;
+  position: relative;
+}
+
+.menu li{
+  margin: auto 102px;
+  font-size: 20px;
+  transition: 1s;
+}
+
+.menu li:hover{
+  transition: 1s;
+  font-size: 24px;
+}
+
+.menu li a{
+  text-decoration: none;
+  color: inherit;
+}
+
+/*Funciones del Navbar*/
+.navbar.default {
+  background-color: transparent;
+}
+
+.navbar.scrolled {
+  height: 75px;
+  background-color: rgba(217, 217, 217);
+}
+
+
+/* Estilos para dispositivos pequeños */
+.menu-toggle {
+  display: none;
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  margin-right: 15px;
+}
+
+/*Responsive*/
+@media (max-width: 768px) {
+
+  .navbar img {
+    height: 40px; /* Asegura que el logo tenga una altura fija */
+    width: auto;  /* Mantiene la relación de aspecto */
+    margin-left: 10px; /* Ajusta el margen para que no quede pegado al borde */
+  }
+  
+  .navbar.scrolled {
+    height: 50px;
+    background-color: rgba(217, 217, 217);
+  }
+
+  .menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 20px;
+    right: 0;
+    background-color: rgba(217, 217, 217);
+    border-radius: 5px;
+    width: 200px;
+  }
+
+  .menu.show {
+    display: flex;
+  }
+
+  .menu li {
+    margin: 10px 0;
+    text-align: center;
+    font-size: 15px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
+
+/*Hero*/
+
+.hero{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100vh; /* Hace que ocupe toda la pantalla */
+  color: white;
+  padding: 0 20px;
+}
+
+.bg-img{
+  position: absolute;
+  top: -10%;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    rgba(236, 240, 247, 0.5),
+    rgba(236, 240, 247, 0)
+  ); /* Ajusta el brillo con opacidad */
+  z-index: -1; /* Coloca la capa encima del video pero detrás del contenido */
+}
+
+.hero-content{
+ margin-top: -17%;
+}
+
+.hero-content h2 {
+  font-size: 40px;
+  font-weight: 600;
+  color: rgb(32, 45, 47);
+}
+
+.hero-content p{
+  font-size: 20px;
+  color: rgb(32, 45, 47);
+  margin-top: 12px;
+}
+
+.prin-button{
+  background-color: rgb(32, 45, 47);
+  padding: 15px;
+  margin-top: 12px;
+  border: none;
+  border-radius: 12px;
+  transition: 0.25s;
+}
+
+.prin-button a{
+  font-family: "Poppins";
+  color: rgba(217, 217, 217, 100%);
+  font-size: 18px;
+  text-decoration: none;
+}
+
+.prin-button:hover{
+  background-color: rgb(0, 168, 206);
+  transition: 0.25s;
+}
+
+/* Media Queries para hacerlo responsive */
+@media (max-width: 768px) {
+  .hero {
+    height: 100vh; /* Reduce la altura en pantallas pequeñas */
+    padding: 0 15px; /* Ajusta el espacio */
+  }
+
+  .bg-img {
+    top: 0;
+    height: 100%;
+  }
+
+  .hero-content h2 {
+    font-size: 28px; /* Ajusta el tamaño del título */
+  }
+
+  .hero-content p {
+    font-size: 14px; /* Ajusta el tamaño del texto */
+  }
+
+  .prin-button {
+    padding: 12px 20px; /* Ajusta el tamaño del botón */
+  }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    height: 100vh; /* Ajusta aún más en pantallas muy pequeñas */
+  }
+
+  .hero-content h2 {
+    margin-top: -45%;
+    font-size: 28px; /* Reducción en pantallas muy pequeñas */
+  }
+
+  .hero-content p {
+    font-size: 16px; /* Ajuste del tamaño del texto */
+  }
+
+  .prin-button {
+    padding: 10px 15px; /* Botón más pequeño */
+  }
+
+  .prin-button a{
+    font-size: 16px;
+  }
+
+}
+
+/*Sección Home*/
+.home {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap; /* Permite que los elementos se ajusten en pantallas pequeñas */
+  padding: 75px;
+  text-align: center; /* Centra el texto en pantallas pequeñas */
+  gap: 20px; /* Espacio entre los elementos */
+  margin-top: 7%;
+}
+
+.home h2 {
+  font-size: 40px;
+  font-weight: 600;
+  color: rgb(32, 45, 47);
+  width: 100%; /* Ocupa todo el ancho para centrarlo */
+  margin-bottom: 0px; /* Espacio entre el título y el contenido */
+}
+
+.img {
+  flex: 1; /* Permite que la imagen ocupe el espacio disponible */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0; /* Ajuste para móviles */
+}
+
+.img img {
+  max-width: 100%; /* Escala la imagen para que no desborde el contenedor */
+  height: auto; /* Mantiene las proporciones */
+}
+
+.home-content {
+  flex: 1; /* Permite que el texto ocupe el espacio disponible */
+}
+
+.home-content p {
+  font-size: 20px;
+  color: rgb(32, 45, 47);
+  line-height: 1.8;
+  margin: 0 auto; /* Centra el texto en dispositivos pequeños */
+  max-width: 600px; /* Limita el ancho del texto para mejor legibilidad */
+}
+
+/* Media Queries para hacerlo responsive */
+@media (max-width: 1024px) {
+  .home {
+    flex-direction: column; /* Apila los elementos verticalmente */
+    padding: 50px;
+  }
+
+  .home h2 {
+    font-size: 36px; /* Reduce el tamaño del título */
+    margin-top: 20px;
+  }
+
+  .img {
+    margin-top: 20px;
+  }
+
+  .home-content p {
+    font-size: 18px; /* Reduce el tamaño del texto */
+    line-height: 1.6;
+  }
+}
+
+@media (max-width: 768px) {
+  .home {
+    padding: 40px 20px; /* Reduce los márgenes laterales en móviles */
+  }
+
+  .home h2 {
+    font-size: 28px; /* Ajuste adicional del título */
+  }
+
+  .img img {
+    max-width: 80%; /* Reduce el tamaño de la imagen en móviles */
+  }
+
+  .home-content p {
+    font-size: 16px; /* Reduce aún más el texto */
+  }
+}
+
+@media (max-width: 480px) {
+  .home {
+    padding: 30px 10px; /* Menor margen en pantallas muy pequeñas */
+    gap: 10px; /* Menor espacio entre elementos */
+  }
+
+  .home h2 {
+    font-size: 28px; /* Título más pequeño */
+  }
+
+  .img img {
+    max-width: 100%; /* Asegura que la imagen no desborde */
+  }
+
+  .home-content p {
+    font-size: 14px; /* Ajuste del texto */
+    line-height: 1.4;
+  }
+}
+
+
+/*Sección Características*/
+.char {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin-top: -4;
+}
+
+.char h2{
+  font-size: 40px;
+  font-weight: 600;
+  color: rgb(32, 45, 47);
+  margin-bottom: 2.5%;
+}
+
+.char-content{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  padding-top: 80px;
+  padding-bottom: 120px;
+  background: linear-gradient(
+    rgba(0, 0, 0),
+    rgba(32, 45, 57));
+}
+
+.box{
+  background-color: rgba(38, 54, 70, 50%);
+  padding: 2%;
+  margin-left: 20px;
+  margin-right: 20px;
+  height: 420px;
+  width: 360px;
+  border-radius: 20px;
+  box-shadow: 10px;
+}
+
+.box h3{
+  color: rgba(236, 240, 247);
+  font-weight: 600;
+  font-size: 28px;
+}
+
+.box p{
+  color: rgba(236, 240, 247);
+  font-size: 18px;
+  margin-top: 25px;
+  font-weight: 300;
+}
+
+.sec-button{
+  position: absolute;
+  background-color: transparent;
+  border-width: 1.75px;
+  border-color: rgb(0, 168, 206);
+  border-style: solid;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-top: -90px;
+  border-radius: 12px;
+  transition: 0.25s;
+  margin-left: -60px;
+}
+
+.sec-button a{
+  font-family: "Poppins";
+  color: rgba(217, 217, 217, 100%);
+  font-size: 18px;
+  text-decoration: none;
+}
+
+.sec-button:hover{
+  background-color: rgb(0, 168, 206);
+  transition: 0.25s;
+}
+
+/*Responsive char*/
+@media (max-width: 600px) {
+
+  .char{
+    margin-top: 25px;
+  }
+
+  .char h2 {
+    font-size: 28px;
+  }
+
+  .box{
+    height: auto;
+  }
+
+  .box h3 {
+    font-size: 24px;
+  }
+
+  .box p {
+    font-size: 16px;
+    margin-top: 12px;
+  }
+
+  .sec-button {
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+}
+
+/*Pasos*/
+
+.steps {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 20px;
+  margin-top: 7%;
+}
+
+.steps h2 {
+  font-size: 40px;
+  font-weight: 600;
+  color: rgb(32, 45, 47);
+  margin-bottom: 30px;
+}
+
+.steps-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 100px;
+}
+
+.step-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 250px;
+  background: rgba(217, 217, 217);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.step-box:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.step-box img {
+  width: 150px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.step-box p {
+  font-size: 16px;
+  color: rgb(32, 45, 47);
+  line-height: 1.5;
+}
+
+/* Media Queries para responsividad */
+@media (max-width: 600px) {
+  .steps{
+    margin-top: 25px;
+  }
+
+  .steps h2{
+    font-size: 28px;
+  }
+
+  .steps-content {
+    gap: 20px;
+  }
+
+  .step-box {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+/*Apps*/
+.apps {
+  text-align: center;
+  margin-top: 7%;
+  padding: 20px;
+}
+
+.apps h2 {
+  font-size: 40px;
+  font-weight: 600;
+  color: rgb(32, 45, 47);
+  margin-bottom: 2.5%;
+}
+
+.apps-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap; /* Permite que las imágenes se acomoden en varias filas */
+  gap: 30px; /* Espaciado entre imágenes */
+}
+
+.app-img {
+  width: 120px;
+  height: auto;
+  flex: 1 1 calc(33.333% - 60px); /* Ajusta el ancho en pantallas grandes */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-img img {
+  width: 50%;
+  height: auto;
+}
+
+.apps p {
+  margin-top: 20px;
+  font-size: 18px;
+  color: rgb(32, 45, 47);
+  line-height: 1.6;
+  padding: 0 20px; /* Margen interno para evitar que el texto toque los bordes en móviles */
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .apps h2 {
+    font-size: 32px;
+  }
+
+  .apps-content {
+    gap: 20px; /* Reduce el espacio entre imágenes */
+  }
+
+  .app-img {
+    flex: 1 1 calc(50% - 40px); /* Ajusta el ancho en pantallas medianas */
+  }
+
+  .apps p {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .apps h2 {
+    font-size: 28px;
+  }
+
+  .app-img {
+    flex: 1 1 100%; /* Cada imagen ocupa toda la fila */
+  }
+
+  .apps p {
+    font-size: 16px;
+  }
+}
+
+/*Cta*/
+.cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 7.5%;
+  flex-wrap: wrap; /* Permite que los elementos se adapten en pantallas pequeñas */
+  gap: 20px; /* Espaciado entre los elementos */
+  background: linear-gradient(
+    rgba(0, 0, 0),
+    rgba(32, 45, 57));
+  padding: 40px 0; /* Espaciado interno */
+}
+
+.cta-content {
+  color: rgba(236, 240, 247);
+  text-align: center;
+  padding: 40px;
+  border-radius: 12px;
+  max-width: 600px; /* Máximo ancho para centrar el contenido */
+  flex: 1 1 100%; /* Ajuste dinámico del ancho */
+}
+
+.cta-content h3 {
+  font-weight: 600;
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.cta-content p {
+  font-size: 18px;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.cta-content button {
+  margin: 10px; /* Espaciado uniforme entre botones */
+  padding: 12px 30px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  transition: all 0.25s ease-in-out;
+}
+
+.white-button {
+  background-color: rgba(236, 240, 247);
+  border: none;
+  color: rgb(32, 45, 47);
+}
+
+.white-button a{
+  text-decoration: none;
+  color: rgb(32, 45, 47);
+}
+
+.white-button:hover {
+  background-color: rgb(0, 168, 206);
+  color: white;
+}
+
+.blue-button {
+  background-color: transparent;
+  color: rgb(0, 168, 206);
+  border: 1.75px solid rgb(0, 168, 206);
+}
+
+.blue-button a{
+  text-decoration: none;
+  color: rgb(0, 168, 206);;
+}
+
+.blue-button:hover {
+  background-color: rgba(236, 240, 247);
+  color: rgb(32, 45, 47);
+  border-color: rgba(236, 240, 247);
+}
+
+.cta img {
+  max-width: 400px;
+  height: auto;
+  flex: 1 1 auto; /* Tamaño dinámico basado en el espacio disponible */
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .cta-content {
+    max-width: 100%;
+    padding: 30px;
+  }
+
+  .cta-content h3 {
+    font-size: 28px;
+  }
+
+  .cta-content p {
+    font-size: 16px;
+  }
+
+  .cta img {
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 600px) {
+  .cta-content h3 {
+    font-size: 24px;
+    margin-top: -50px;
+  }
+
+  .cta-content p {
+    font-size: 16px;
+  }
+
+  .cta-content button {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+}
+
+/*Opinion*/
+.opinion{
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 7.5%;
+}
+
+.opinion h2{
+  font-size: 40px;
+  font-weight: 600;
+  color: rgb(32, 45, 47);
+  margin-bottom: 2.5%;
+}
+
+.opinion p{
+  margin-top: 10px;
+  font-size: 20px;
+  color: rgb(32, 45, 47);
+}
+
+.opinion input{
+  background-color: transparent;
+  border-width: 1.75px;
+  border-color: rgb(32, 45, 47);
+  border-style: solid;
+  height: 200px;
+  width: 700px;
+  border-radius: 12px;
+  margin-top: 10px;
+  text-align: start;
+}
+
+.black-button{
+  background-color: rgb(32, 45, 47);
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 102px;
+  padding-right: 102px;
+  border: none;
+  border-radius: 12px;
+  transition: 0.25s;
+  margin-top: 20px;
+}
+
+.black-button a{
+  font-family: "Poppins";
+  color: rgba(236, 240, 247);
+  font-size: 18px;
+}
+
+.black-button:hover{
+  background-color: rgb(0, 168, 206);
+  transition: 0.25s;
+}
+
+@media (max-width: 600px) {
+  .opinion h2 {
+    font-size: 28px;
+  }
+
+  .opinion p {
+    font-size: 16px;
+  }
+
+  .opinion input {
+    height: 150px;
+    font-size: 14px;
+    width: 300px;
+  }
+
+  .black-button {
+    padding: 10px 35px;
+  }
+
+  .black-button a{
+    font-size: 16;
+    font-weight: 300;
+  }
+}
+
+/*footer*/
+.footer {
+  margin-top: 7.5%;
+}
+
+.footer-container {
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  background: linear-gradient(rgba(0, 0, 0), rgba(32, 45, 57));
+  padding: 40px 20px;
+}
+
+.contact, .visit, .items {
+  flex: 1 1 300px;
+  margin: 10px;
+}
+
+.contact h2, .visit h2, .items h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: rgba(236, 240, 247);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.contact label, .contact input, .msj input {
+  width: 100%;
+  max-width: 400px;
+  margin: 10px auto;
+  color: rgba(217, 217, 217);
+}
+
+.contact input, .msj input {
+  background-color: transparent;
+  border: 1px solid rgba(217, 217, 217);
+  border-radius: 8px;
+  padding: 10px;
+  color: rgba(217, 217, 217);
+  font-size: 16px;
+}
+
+.whit-button {
+  background-color: rgba(217, 217, 217);
+  border: none;
+  color: rgb(32, 45, 47);
+  padding: 12px 50px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  transition: all 0.25s ease-in-out;
+}
+
+.whit-button:hover {
+  background-color: rgb(0, 168, 206);
+  color: rgba(217, 217, 217);
+}
+
+.visbox {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.visbox a {
+  font-size: 16px;
+  color: rgba(217, 217, 217);
+  margin-left: 5px;
+  text-decoration: none;
+}
+
+.link a {
+  font-size: 16px;
+  color: rgba(217, 217, 217);
+  text-decoration: none;
+}
+
+.items .term {
+  margin-top: 15px;
+}
+
+.items .term a {
+  font-size: 16px;
+  color: rgba(236, 240, 247);
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+  }
+
+  .contact, .visit, .items {
+    flex: 1 1 100%;
+  }
+
+  .contact input, .msj input {
+    width: 90%;
+  }
+
+  .white-button {
+    padding: 10px 20px;
+  }
+
+  .footer h2 {
+    font-size: 20px;
+  }
+}
